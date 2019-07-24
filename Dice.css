@@ -1,0 +1,37 @@
+.onedice{
+    -fx-background-image: url("./imgs/onedice.png");
+}
+.twodice{
+    -fx-background-image: url("./imgs/twodice.png");
+}
+.threedice{
+    -fx-background-image: url("./imgs/threedice.png");
+}
+.fourdice{
+    -fx-background-image: url("./imgs/fourdice.png");
+}
+.fivedice{
+    -fx-background-image: url("./imgs/fivedice.png");
+}
+.sixdice{
+    -fx-background-image: url("./imgs/sixdice.png");
+}
+
+.lockedone{
+    -fx-background-image: url("./imgs/lockedone.png");
+}
+.lockedtwo{
+    -fx-background-image: url("./imgs/lockedtwo.png");
+}
+.lockethree{
+    -fx-background-image: url("./imgs/lockedthree.png");
+}
+.lockedfour{
+    -fx-background-image: url("./imgs/lockedfour.png");
+}
+.lockedfive{
+    -fx-background-image: url("./imgs/lockedfive.png");
+}
+.lockedsix{
+    -fx-background-image: url("./imgs/lockedsix.png");
+}
