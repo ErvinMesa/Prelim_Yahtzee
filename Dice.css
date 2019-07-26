@@ -23,7 +23,7 @@
 .lockedtwo{
     -fx-background-image: url("./imgs/lockedtwo.png");
 }
-.lockethree{
+.lockedthree{
     -fx-background-image: url("./imgs/lockedthree.png");
 }
 .lockedfour{
@@ -34,4 +34,14 @@
 }
 .lockedsix{
     -fx-background-image: url("./imgs/lockedsix.png");
+}
+
+.endgamecard{
+    -fx-background-color: #b5b5b5;
+}
+
+.main{
+    -fx-background-image: url("./imgs/bg.jpg");
+    -fx-background-position: -250 0;
+    -fx-background-repeat: no-repeat;
 }

@@ -20,12 +20,13 @@ public class Die {
     public boolean equalsTo(Die die){
         return die.getNumber() == number;
     }
-    public void lock(){
-        lock = true;
-    }
     public void unlock(){
         lock = false;
     }
+    public void toggleLock(){
+        lock = !lock;
+    }
+
     public boolean isLocked(){
         return lock;
     }

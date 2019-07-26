@@ -2,7 +2,7 @@ package Yahtzee;
 
 public class Yahtzee_Test {
     public static void main(String[] args) {
-        Yahtzee_Set a = new Yahtzee_Set(1,1,1,1,1);
+        Yahtzee_Set a = new Yahtzee_Set(3,4,5,6,6);
         a.sortDice();
         a.printSet();
         System.out.println(a.getThreeOfAKind());

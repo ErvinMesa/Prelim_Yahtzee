@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class Yahtzee_Controller {
     @FXML
@@ -51,6 +53,17 @@ public class Yahtzee_Controller {
     private Label Score;
     @FXML
     private Label rolls;
+    @FXML
+    private Label bonuspoints;
+    @FXML
+    private Label total;
+    @FXML
+    private Label totaltext;
+    @FXML
+    private Button newgamebutton;
+    @FXML
+    private VBox holder;
+
 
     Yahtzee_Set dice = new Yahtzee_Set();
     String[] dicecss = new String[]{"onedice","twodice","threedice","fourdice","fivedice","sixdice"};
@@ -70,8 +83,6 @@ public class Yahtzee_Controller {
             dice5.addEventHandler(ActionEvent.ACTION,diceEvent);
             resetGame();
             Roll.setText("Roll");
-        }
-        if(rollcount == 4){
             dice.rollDice();
             toggleScoreButtons(false);
         }
@@ -137,7 +148,7 @@ public class Yahtzee_Controller {
             if (!Chance.isDisabled()) {
                 Chance.setText(Integer.toString(points[12]));
             }
-            if(rollcount <= 3){
+            if(rollcount <= 2){
                 Roll.setText("Reroll");
             }
             rollcount--;
@@ -187,28 +198,40 @@ public class Yahtzee_Controller {
         else {
             scores.scorepoint(12,dice.getChance());
         }
+        ((Button) event.getSource()).setDisable(true);
         if(scores.checkScores()){
             newgame = true;
-            Roll.setText("New Game!");
+            total.setVisible(true);
+            totaltext.setVisible(true);
+            newgamebutton.setVisible(true);
+            holder.setVisible(true);
+            total.setText(Integer.toString(scores.total()));
         }
         else {
             dice.unlockDice();
-            ((Button) event.getSource()).setDisable(true);
             Score.setText(Integer.toString(scores.total()));
             rolls.setText("3");
             rollcount = 3;
             dice.rollDice();
             Roll.setText("Roll");
             Roll.setDisable(false);
+            bonuspoints.setText(Integer.toString(scores.getBonus()));
             rollDice(event);
         }
     }
     public void resetGame(){
-        rollcount = 4;
+        rollcount = 3;
         scores.resetScores();
         Score.setText("0");
         rolls.setText("3");
         dice.unlockDice();
+        Roll.setText("Roll");
+        bonuspoints.setText("0");
+
+        total.setVisible(false);
+        totaltext.setVisible(false);
+        newgamebutton.setVisible(false);
+        holder.setVisible(false);
         toggleScoreButtons(true);
     }
     public void toggleScoreButtons(boolean state){
@@ -231,31 +254,55 @@ public class Yahtzee_Controller {
         @Override
         public void handle(Event event) {
             if(event.getSource() == dice1){
-                dice.lockDie(0);
+                dice.toggleLock(0);
                 dice1.getStyleClass().clear();
-                dice1.getStyleClass().add(lockeddicecss[dice.getDie(0).getNumber() - 1]);
+                if(dice.getDie(0).isLocked()) {
+                    dice1.getStyleClass().add(lockeddicecss[dice.getDie(0).getNumber() - 1]);
+                }
+                else{
+                    dice1.getStyleClass().add(dicecss[dice.getDie(0).getNumber() - 1]);
+                }
             }
             else if(event.getSource() == dice2){
-                dice.lockDie(1);
+                dice.toggleLock(1);
                 dice2.getStyleClass().clear();
-                dice2.getStyleClass().add(lockeddicecss[dice.getDie(1).getNumber() - 1]);
+                if(dice.getDie(1).isLocked()) {
+                    dice2.getStyleClass().add(lockeddicecss[dice.getDie(1).getNumber() - 1]);
+                }
+                else{
+                    dice2.getStyleClass().add(dicecss[dice.getDie(1).getNumber() - 1]);
+                }
             }
             else if(event.getSource() == dice3){
-                dice.lockDie(2);
+                dice.toggleLock(2);
                 dice3.getStyleClass().clear();
-                dice3.getStyleClass().add(lockeddicecss[dice.getDie(2).getNumber() - 1]);
+                if(dice.getDie(2).isLocked()) {
+                    dice3.getStyleClass().add(lockeddicecss[dice.getDie(2).getNumber() - 1]);
+                }
+                else{
+                    dice3.getStyleClass().add(dicecss[dice.getDie(2).getNumber() - 1]);
+                }
             }
             else if(event.getSource() == dice4){
-                dice.lockDie(3);
+                dice.toggleLock(3);
                 dice4.getStyleClass().clear();
-                dice4.getStyleClass().add(lockeddicecss[dice.getDie(3).getNumber() - 1]);
+                if(dice.getDie(3).isLocked()) {
+                    dice4.getStyleClass().add(lockeddicecss[dice.getDie(3).getNumber() - 1]);
+                }
+                else{
+                    dice4.getStyleClass().add(dicecss[dice.getDie(3).getNumber() - 1]);
+                }
             }
             else{
-                dice.lockDie(4);
+                dice.toggleLock(4);
                 dice5.getStyleClass().clear();
-                dice5.getStyleClass().add(lockeddicecss[dice.getDie(4).getNumber() - 1]);
+                if(dice.getDie(4).isLocked()) {
+                    dice5.getStyleClass().add(lockeddicecss[dice.getDie(4).getNumber() - 1]);
+                }
+                else{
+                    dice5.getStyleClass().add(dicecss[dice.getDie(4).getNumber() - 1]);
+                }
             }
-            System.out.println(event);
         }
     }
 }

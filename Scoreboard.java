@@ -3,7 +3,7 @@ package Yahtzee;
 public class Scoreboard {
     int[] scores = new int[13];
     boolean[] scored = new boolean[13];
-    boolean bonusyahtzee = false;
+    int bonuspoints;
     public Scoreboard(){
 
     }
@@ -19,13 +19,16 @@ public class Scoreboard {
         int sum = 0;
         for(int i = 0;i < 13;i++){
             sum+=scores[i];
-            if(i == 5 && sum > 63){
-                sum+=35;
+            if(i == 5){
+                if(sum >= 63)
+                    sum+=35;
+                bonuspoints = sum;
             }
         }
-        if(bonusyahtzee)
-            sum+=100;
         return sum;
+    }
+    public int getBonus(){
+        return bonuspoints;
     }
     public boolean checkScores(){
         for(boolean val: scored){

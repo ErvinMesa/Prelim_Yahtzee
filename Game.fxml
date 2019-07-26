@@ -3,20 +3,34 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Yahtzee.Yahtzee_Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" styleClass="main" stylesheets="@Dice.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Yahtzee.Yahtzee_Controller">
    <bottom>
-      <Pane prefHeight="150.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="189.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="Roll" layoutX="237.0" layoutY="96.0" mnemonicParsing="false" onAction="#rollDice" prefHeight="40.0" prefWidth="125.0" text="Roll" />
-            <HBox alignment="CENTER" layoutX="80.0" layoutY="14.0" prefHeight="75.0" prefWidth="439.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91aac2" height="182.0" layoutX="32.0" layoutY="-5.0" strokeType="INSIDE" strokeWidth="3.0" width="535.0">
+               <stroke>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#91aac2" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </stroke>
+            </Rectangle>
+            <Button fx:id="Roll" layoutX="237.0" layoutY="124.0" mnemonicParsing="false" onAction="#rollDice" prefHeight="40.0" prefWidth="125.0" text="Roll" />
+            <HBox alignment="CENTER" layoutX="81.0" layoutY="31.0" prefHeight="75.0" prefWidth="439.0">
                <children>
                   <Button fx:id="dice1" mnemonicParsing="false" prefHeight="75.0" prefWidth="75.0" styleClass="onedice" stylesheets="@Dice.css">
                      <padding>
@@ -60,173 +74,337 @@
                   </Button>
                </children>
             </HBox>
+            <Label layoutX="96.0" layoutY="4.0" prefWidth="72.0" text="Rolls:">
+               <font>
+                  <Font name="Algerian" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="rolls" layoutX="168.0" layoutY="4.0" prefWidth="72.0" text="3">
+               <font>
+                  <Font name="Algerian" size="18.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </bottom>
    <center>
-      <Pane prefHeight="407.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="507.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane layoutX="1.0" prefHeight="58.0" prefWidth="600.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91aac2" height="515.0" layoutX="342.0" layoutY="14.0" opacity="0.85" strokeType="INSIDE" strokeWidth="3.0" width="275.0">
+               <stroke>
+                  <LinearGradient endX="0.5114504107992157" endY="0.4809160159744379" startY="0.4847328171475243">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#91aac2" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </stroke>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91aac2" height="515.0" layoutX="-2.0" layoutY="14.0" opacity="0.85" strokeType="INSIDE" strokeWidth="3.0" width="268.0">
+               <stroke>
+                  <LinearGradient endX="0.37022900717859053" endY="0.5305343001853419" startX="1.0" startY="0.526717558161903">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#91aac2" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </stroke>
+            </Rectangle>
+            <Label layoutX="28.0" layoutY="495.0" prefWidth="72.0" text="Bonus: ">
+               <font>
+                  <Font name="Algerian" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="160.0" layoutY="495.0" prefHeight="20.0" prefWidth="43.0" text="/ 63">
+               <font>
+                  <Font name="Algerian" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="bonuspoints" layoutX="124.0" layoutY="495.0" prefHeight="20.0" prefWidth="43.0" text="0" textAlignment="CENTER">
+               <font>
+                  <Font name="Algerian" size="18.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" layoutX="-1.0" layoutY="25.0" prefHeight="460.0" prefWidth="600.0">
                <children>
-                  <VBox alignment="CENTER" layoutX="200.0" layoutY="2.0" prefHeight="50.0" prefWidth="200.0">
+                  <VBox alignment="CENTER" prefHeight="375.0" prefWidth="100.0">
                      <children>
-                        <Label text="Total Score">
-                           <font>
-                              <Font name="Algerian" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="Score" text="0">
-                           <font>
-                              <Font name="Algerian" size="28.0" />
-                           </font>
-                        </Label>
+                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/67159830_362890967715947_5504786989745963008_n.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/67442196_687663288348091_3751739089372577792_n.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/67507948_2446931655536021_2443172505444155392_n.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/67554656_344904163117224_7388535323371765760_n.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/67236764_2321237328118938_8991493671736049664_n.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/67193577_358654168153476_5443585552613900288_n.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </ImageView>
                      </children>
                   </VBox>
-               </children></Pane>
-            <VBox alignment="CENTER" layoutX="35.0" layoutY="91.0" prefHeight="375.0" prefWidth="100.0">
+                  <VBox alignment="CENTER" prefHeight="375.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="ones" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="60.0" prefWidth="60.0" style="-fx-border-radius: 20%;" text="1" VBox.vgrow="NEVER">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="twos" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="60.0" prefWidth="60.0" style="-fx-border-radius: 20%;" text="2" VBox.vgrow="NEVER">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="threes" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="60.0" prefWidth="60.0" style="-fx-border-radius: 20%;" text="3" VBox.vgrow="NEVER">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="fours" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="60.0" prefWidth="60.0" style="-fx-border-radius: 20%;" text="4" VBox.vgrow="NEVER">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="fives" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="60.0" prefWidth="60.0" style="-fx-border-radius: 20%;" text="5" VBox.vgrow="NEVER">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="sixes" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="60.0" prefWidth="60.0" style="-fx-border-radius: 20%;" text="6" VBox.vgrow="NEVER">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="25.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="450.0" prefWidth="125.0">
+                     <children>
+                        <ImageView fitHeight="75.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/67501826_1225746717605993_7796144989825662976_n.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="75.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/67075959_2362931473948416_4349979371725914112_n.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="75.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/67168912_463297501161603_8366403568835493888_n.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="75.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/67580035_337731417181929_3738237683583942656_n.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="75.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/67447200_649438788857490_2926039138614378496_n.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="75.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/67127480_1209833025865865_397219247211675648_n.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="75.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imgs/67024716_463744977793573_1680185261960462336_n.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </VBox.margin>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="125.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="450.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="ThreeOfAKind" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="60.0" prefWidth="60.0" style="-fx-border-radius: 20%;" VBox.vgrow="NEVER">
+                           <VBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="3.0" top="3.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="FourOfAKind" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="60.0" prefWidth="60.0" style="-fx-border-radius: 20%;" VBox.vgrow="NEVER">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="3.0" top="3.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="FullHouse" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="60.0" prefWidth="60.0" style="-fx-border-radius: 20%;" VBox.vgrow="NEVER">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="3.0" top="3.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="ShortStraight" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="60.0" prefWidth="60.0" style="-fx-border-radius: 20%;" VBox.vgrow="NEVER">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="3.0" top="3.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="LongStraight" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="60.0" prefWidth="60.0" style="-fx-border-radius: 20%;" VBox.vgrow="NEVER">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="3.0" top="3.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="Yahtzee" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="60.0" prefWidth="60.0" style="-fx-border-radius: 20%;" VBox.vgrow="NEVER">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="3.0" top="3.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="Chance" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="60.0" prefWidth="60.0" style="-fx-border-radius: 20%;" VBox.vgrow="NEVER">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="3.0" top="3.0" />
+                           </padding>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox fx:id="holder" alignment="CENTER" layoutX="48.0" layoutY="244.0" prefHeight="200.0" prefWidth="505.0" styleClass="endgamecard" stylesheets="@Dice.css" visible="false">
                <children>
-                  <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/67159830_362890967715947_5504786989745963008_n.png" />
-                     </image></ImageView>
-                  <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/67442196_687663288348091_3751739089372577792_n.png" />
-                     </image></ImageView>
-                  <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/67507948_2446931655536021_2443172505444155392_n.png" />
-                     </image></ImageView>
-                  <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/67554656_344904163117224_7388535323371765760_n.png" />
-                     </image></ImageView>
-                  <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/67236764_2321237328118938_8991493671736049664_n.png" />
-                     </image></ImageView>
-                  <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/67193577_358654168153476_5443585552613900288_n.png" />
-                     </image></ImageView>
+                  <Label fx:id="totaltext" text="Total Score!">
+                     <font>
+                        <Font name="Algerian" size="40.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="total" text="0">
+                     <font>
+                        <Font name="Algerian" size="40.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button fx:id="newgamebutton" mnemonicParsing="false" onAction="#resetGame" prefHeight="56.0" prefWidth="205.0" text="New Game!">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
             </VBox>
-            <VBox alignment="CENTER" layoutX="135.0" layoutY="91.0" prefHeight="375.0" prefWidth="100.0">
-               <children>
-                  <Button fx:id="ones" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="70.0" prefWidth="70.0" text="1">
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="twos" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="70.0" prefWidth="70.0" text="2">
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="threes" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="70.0" prefWidth="70.0" text="3">
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="fours" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="70.0" prefWidth="70.0" text="4">
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="fives" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="70.0" prefWidth="70.0" text="5">
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="sixes" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="70.0" prefWidth="70.0" text="6">
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" layoutX="302.0" layoutY="91.0" prefHeight="450.0" prefWidth="125.0">
-               <children>
-                  <ImageView fitHeight="75.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/67501826_1225746717605993_7796144989825662976_n.png" />
-                     </image></ImageView>
-                  <ImageView fitHeight="75.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/67075959_2362931473948416_4349979371725914112_n.png" />
-                     </image></ImageView>
-                  <ImageView fitHeight="75.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/67168912_463297501161603_8366403568835493888_n.png" />
-                     </image></ImageView>
-                  <ImageView fitHeight="75.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/67580035_337731417181929_3738237683583942656_n.png" />
-                     </image></ImageView>
-                  <ImageView fitHeight="75.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/67447200_649438788857490_2926039138614378496_n.png" />
-                     </image></ImageView>
-                  <ImageView fitHeight="75.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/67127480_1209833025865865_397219247211675648_n.png" />
-                     </image></ImageView>
-                  <ImageView fitHeight="75.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@imgs/67024716_463744977793573_1680185261960462336_n.png" />
-                     </image></ImageView>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" layoutX="427.0" layoutY="91.0" prefHeight="450.0" prefWidth="100.0">
-               <children>
-                  <Button fx:id="ThreeOfAKind" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="70.0" prefWidth="70.0">
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="FourOfAKind" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="70.0" prefWidth="70.0">
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="FullHouse" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="70.0" prefWidth="70.0">
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="ShortStraight" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="70.0" prefWidth="70.0">
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="LongStraight" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="70.0" prefWidth="70.0">
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="Yahtzee" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="70.0" prefWidth="70.0">
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="Chance" disable="true" mnemonicParsing="false" onAction="#setScore" prefHeight="70.0" prefWidth="70.0">
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-            <Label layoutX="94.0" layoutY="620.0" prefWidth="72.0" text="Rolls:">
-               <font>
-                  <Font name="Algerian" size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="rolls" layoutX="166.0" layoutY="620.0" prefWidth="72.0" text="3">
-               <font>
-                  <Font name="Algerian" size="18.0" />
-               </font>
-            </Label>
          </children>
       </Pane>
    </center>
+   <top>
+      <VBox alignment="CENTER" prefHeight="69.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Total Score">
+               <font>
+                  <Font name="Algerian" size="24.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.5687023055462437">
+                     <stops>
+                        <Stop color="#d3e0ed" />
+                        <Stop color="#91aac2" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label fx:id="Score" text="0" textAlignment="CENTER">
+               <font>
+                  <Font name="Algerian" size="24.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="0.5687023055462437">
+                     <stops>
+                        <Stop color="#91aac283" />
+                        <Stop color="#91aac2" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+         </children>
+      </VBox>
+   </top>
+   <effect>
+      <Blend />
+   </effect>
 </BorderPane>

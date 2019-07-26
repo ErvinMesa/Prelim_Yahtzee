@@ -51,7 +51,7 @@ public class Yahtzee_Set {
         //[Ones,Twos,Threes,Fours,Fives,Sixes,3OAK,4OAK,FH,SS,LS,Yahtzee,Chance]
         int[] scores = new int[13];
         for(int i = 0; i < 6; i++) {
-            scores[i] = (getValueCount(i+1))*i;
+            scores[i] = (getValueCount(i+1));
         }
         scores[6] = getThreeOfAKind();
         scores[7] = getFourOfAKind();
@@ -69,7 +69,7 @@ public class Yahtzee_Set {
         }
     }
     public int getThreeOfAKind(){
-        return (dice[0].equalsTo(dice[2]) || dice[2].equalsTo(dice[4]))? sum:0;
+        return (dice[0].equalsTo(dice[2]) || dice[1].equalsTo(dice[3]) || dice[2].equalsTo(dice[4]))? sum:0;
     }
     public int getFourOfAKind(){
         return (dice[0].equalsTo(dice[3]) || dice[1].equalsTo(dice[4]))? sum:0;
@@ -148,8 +148,8 @@ public class Yahtzee_Set {
     public Die getDie(int num){
         return unsorted[num];
     }
-    public void lockDie(int num){
-        unsorted[num].lock();
+    public void toggleLock(int num){
+        unsorted[num].toggleLock();
     }
     public void unlockDice(){
         for(Die die:unsorted){
